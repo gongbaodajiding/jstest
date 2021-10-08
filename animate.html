@@ -39,7 +39,7 @@
             step = step > 0 ? Math.ceil(step) : Math.floor(step); // 正数向上取整，负数向下取整
             if (obj.offsetLeft === target) {
                 clearInterval(obj.timer);
-                // 如果有回调函数，则在定时器结束时执行
+                // 如果有回调函数，则在定时器结束时执行。
                 if (callback) {
                     callback();
                 }
