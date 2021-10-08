@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1 {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .div2 {
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+<div class="div1"></div>
+<div class="div2"></div>
+<button class="btn500">点击紫色到500</button>
+<button class="btn800">点击紫色到800</button>
+<script>
+    function animate(obj, target, callback) {
+        clearInterval(obj.timer); // 先清除之前的定时器，只保留一个，否则会叠加
+        obj.timer = setInterval(easeOut, 15);
+
+        function easeOut() {
+            let step = (target - obj.offsetLeft) / 10; // 缓动动画算法
+            step = step > 0 ? Math.ceil(step) : Math.floor(step); // 正数向上取整，负数向下取整
+            if (obj.offsetLeft === target) {
+                clearInterval(obj.timer);
+                // 如果有回调函数，则在定时器结束时执行
+                if (callback) {
+                    callback();
+                }
+            }
+            obj.style.left = obj.offsetLeft + step + 'px';
+        }
+    }
+
+    let btn500 = document.querySelector('.btn500');
+    let btn800 = document.querySelector('.btn800');
+    let div2 = document.querySelector('.div2');
+
+    btn500.addEventListener('click', function () {
+        animate(div2, 500, function () {
+            div2.style.backgroundColor = 'purple';
+        });
+    });
+
+    btn800.addEventListener('click', function () {
+        animate(div2, 800, function () {
+            div2.style.backgroundColor = 'red';
+        });
+    });
+</script>
+</body>
+</html>

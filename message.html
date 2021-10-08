@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number">
+<button>点击发送短信</button>
+<script>
+    let btn = document.querySelector('button');
+    let time = 5;
+
+    btn.addEventListener('click', function () {
+        btn.disabled = true; // 禁用按钮
+        fn(); // 先执行一次函数，因为在计时器中函数是在设定的时间间隔后才执行，影响观感
+
+        function fn() {
+            if (time == 0) {
+                clearInterval(timer);
+                btn.disabled = false;
+                time = 5;
+                btn.innerHTML = '点击发送短信';
+            } else {
+                btn.innerHTML = time + '秒后再次发送';
+                time--;
+            }
+        }
+
+        let timer = setInterval(fn, 1000);
+    });
+</script>
+</body>
+</html>

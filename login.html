@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .container {
+            height: 100%;
+            background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+        }
+
+        .login {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 250px;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 15px;
+        }
+
+        .header {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            line-height: 150px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 700;
+            cursor: move;
+            user-select: none
+        }
+
+        .header a {
+            display: block;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            line-height: 6px;
+            font-size: 6px;
+            font-weight: 400;
+            color: rgb(128, 125, 125);
+            text-decoration: none;
+
+        }
+
+        .ipt {
+            display: block;
+            width: 180px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 12px;
+            border: 0;
+            outline: none;
+            border-bottom: 1px solid rgb(128, 125, 125);
+        }
+
+        .ipt::placeholder {
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: block;
+            width: 180px;
+            height: 30px;
+            margin-top: 30px;
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            background-image: linear-gradient(to left, #fbc2eb, #a6c1ee);
+            cursor: pointer;
+        }
+
+        .msg {
+            width: 180px;
+            margin-top: 20px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .msg a {
+            text-decoration: none;
+            color: #bc84ff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="login">
+        <div class="header">Login
+            <a href=""> X </a></div>
+        <form action="">
+            <input type="text" name="username" placeholder="username" class="ipt">
+            <input type="password" name="password" placeholder="password" class="ipt">
+            <button class="btn">Login</button>
+        </form>
+        <div class="msg">
+            Don't have account? <a href="javascript:">Sign up</a>
+        </div>
+    </div>
+</div>
+<script>
+    let header = document.querySelector('.header');
+    let login = document.querySelector('.login');
+    header.addEventListener('mousedown', get_mouse);
+
+    function get_mouse(e) {
+        // 获取鼠标在盒子内的坐标
+        let x = e.pageX - login.offsetLeft;
+        let y = e.pageY - login.offsetTop;
+        // 鼠标移动时，将鼠标在页面中的坐标减去鼠标在盒子内的坐标即盒子的偏移量
+        document.addEventListener('mousemove', move);
+
+        function move(e) {
+            login.style.left = e.pageX - x + 'px';
+            login.style.top = e.pageY - y + 'px';
+        }
+
+        // 鼠标不点击的时候移除事件
+        document.addEventListener('mouseup', function () {
+            document.removeEventListener('mousemove', move);
+        });
+    }
+</script>
+</body>
+</html>

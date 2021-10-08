@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<img src="images/angel.gif" alt="">
+<script>
+    let img = document.querySelector('img');
+    document.addEventListener('mousemove', function (e) {
+        let x = e.pageX;
+        let y = e.pageY;
+        // console.log(x, y);
+        // 不要忘记加px单位
+        img.style.top = y + 'px';
+        img.style.left = x + 'px';
+    });
+</script>
+</body>
+</html>
