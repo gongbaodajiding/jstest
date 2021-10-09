@@ -40,9 +40,10 @@
             if (obj.offsetLeft === target) {
                 clearInterval(obj.timer);
                 // 如果有回调函数，则在定时器结束时执行
-                if (callback) {
-                    callback();
-                }
+                // if (callback) {
+                //     callback();
+                // }
+                callback && callback();
             }
             obj.style.left = obj.offsetLeft + step + 'px';
         }
