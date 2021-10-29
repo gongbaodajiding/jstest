@@ -55,9 +55,9 @@ class Tab {
         // 如果用createElement，需要innerHTML赋值后再添加，比较麻烦
         // 可以用insertAdjacentHTML直接添加字符串格式的元素
         that.clearClass();
-        let random = Math.random();
+        let timestamp = new Date();
         let li = '<li class="liactive"><span>新选项卡</span><span class="iconfont icon-guanbi"></span></li>';
-        let section = '<section class="conactive">测试 ' + random + '</section>';
+        let section = '<section class="conactive">测试 ' + timestamp + '</section>';
         that.ul.insertAdjacentHTML('beforeend', li);
         that.tabscon.insertAdjacentHTML('beforeend', section);
         // 创建新元素后，再次获取并绑定事件

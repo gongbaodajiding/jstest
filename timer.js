@@ -1,5 +1,5 @@
 function CountDown(inputTime, inputWorkTime) {
-    let now_time = +new Date(); //当前时间距离Unix时间戳1970.1.1的总毫秒数
+    let now_time = +new Date(); //当前时间距离Unix时间戳1970.1.1的总毫秒数，js在某个数据类型前使用‘+’，这个操作目的是为了将该数据类型转换为Number类型，如果转换失败，则返回NaN;
     let input_time = +new Date(inputTime);
     let times = (input_time - now_time) / 1000;
 
